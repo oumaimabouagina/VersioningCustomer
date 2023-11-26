@@ -1,7 +1,14 @@
 import os
+import sys
 import pytest
 from flask import Flask
-from your_application_file import app
+from pytest import fixture
+
+# Add the project's root directory to the Python path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+# Import the Flask app and ValuePredictor from the main application file
+from app import app, ValuePredictor
 
 @pytest.fixture
 def client():
@@ -11,14 +18,16 @@ def client():
 
 def test_index_page(client):
     response = client.get('/index')
-    assert b'Hello, World!' in response.data
+    assert b'Customer Segmentation' in response.data
 
-def test_result_page(client):
-    response = client.post('/result', data={'param1': 'value1', 'param2': 'value2'})
-    assert b'Prediction Result' in response.data
 
-def test_result_page_invalid_input(client):
-    response = client.post('/result', data={})
-    assert b'Invalid input' in response.data
+def test_result_page():
+    # Create a test client using Flask's test_client method
+    client = app.test_client()
 
-# Add more test cases to cover other functionalities in your app.
+    # Send a POST request to the result page with valid input
+    response = client.post('/result', data={'param1': '19', 'param2': '39'})
+
+    # Check if the response contains the expected content
+    assert b'Customers with low annual income and low annual spending score' in response.data
+
