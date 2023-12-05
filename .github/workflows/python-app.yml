@@ -51,4 +51,4 @@ jobs:
             -Dsonar.projectKey=oumaimabouagina_VersioningCustomer
             -Dsonar.python.coverage.reportPaths=coverage.xml
             -Dsonar.branch.name=master
-            -X
+            
