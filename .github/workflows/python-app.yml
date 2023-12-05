@@ -46,6 +46,6 @@ jobs:
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       with:
           args: >
-              -Dsonar.organization=oumaimabouagina
+              -Dsonar.organization=Oumaima Bouagina
               -Dsonar.projectKey=VersioningCustomer
               -Dsonar.python.coverage.reportPaths=coverage.xml
