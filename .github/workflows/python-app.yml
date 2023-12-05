@@ -49,3 +49,4 @@ jobs:
               -Dsonar.organization=oumaimabouagina
               -Dsonar.projectKey=VersioningCustomer
               -Dsonar.python.coverage.reportPaths=coverage.xml
+              -Dsonar.branch.name=${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && 'master' || '' }}
