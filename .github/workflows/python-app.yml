@@ -48,7 +48,7 @@ jobs:
       with:
           args: >
             -Dsonar.organization=oumaimabouagina
-            -Dsonar.projectKey=VersioningCustomer
+            -Dsonar.projectKey=oumaimabouagina_VersioningCustomer
             -Dsonar.python.coverage.reportPaths=coverage.xml
             -Dsonar.branch.name=master
-            -X
+            
